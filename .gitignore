@@ -12,6 +12,9 @@
 # css.map from sass
 /public/css/app.css.map
 
+# api key
+/src/api
+
 # misc
 .DS_Store
 .env.local
