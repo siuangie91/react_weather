@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 
 import APIKEY from '../api';
 
+import Results from './Results';
+
 export default class Search extends React.Component {
 	constructor() {
 		super();
@@ -10,8 +12,7 @@ export default class Search extends React.Component {
 		this.state = {
 			showSearch: true,
 			enableBtn: false,
-			showResults: false,
-			showNotFound: false,
+			showWhat: "",
 			name: "",
 			country: "",
 			list: [],
@@ -45,21 +46,20 @@ export default class Search extends React.Component {
 					this.setState(prevState => {
 						return {
 							showSearch: false,
-							showResults: true,
-							name: city.name,
+							showWhat: "results",
+							city: city.name,
 							country: city.country,
-							list: json.list
+							list: json.list,
+							categorizedList: this.categorizeResults()
 						}
 					});
-
-					this.categorizeResults();
 				}
 
 				// if not found
 				if(json.cod === "404") {
 					this.setState({
 						showSearch: false,
-						showNotFound: true
+						showWhat: "notFound"
 					});
 				}
 
@@ -73,7 +73,6 @@ export default class Search extends React.Component {
 	categorizeResults = () => {
 		// get an array of all the dates
 		// use values of that array to filter out the results
-		console.log('categorizeResults');
 
 		const dates = this.state.list
 			.map((item, i) => {
@@ -83,7 +82,34 @@ export default class Search extends React.Component {
 				return currArr.indexOf(item) === i;
 			});
 
-		console.log('dates', dates);
+		// console.log('dates', dates);
+
+		// create a new object with those dates as keys
+		let sortedResults = {};
+		for(let theDate of dates) {
+			sortedResults[`${theDate}`] = [];
+		}
+
+		// loop through the response list, and map each item to the sortedResults object based on date
+		for(let item of this.state.list) {
+			let itemDate = item.dt_txt.split(" ")[0];
+
+			sortedResults[itemDate].push(item);
+		}
+
+		// console.log('sortedResults', sortedResults);
+		return sortedResults;
+	}
+
+	handleClear = () => {
+		// clear input field
+		// this.inputSearch.current.value = "";
+
+		this.setState({
+			showSearch: true,
+			enableBtn: false,
+			showWhat: ""
+		});
 	}
 
 	render() {
@@ -107,18 +133,16 @@ export default class Search extends React.Component {
 						: ""
 				}
 
-				<div className="results">
 				{
-					(this.state.showResults) ? 
-						<h1>{this.state.name}, {this.state.country}</h1>
-						: ""
+					(this.state.showWhat) ? 
+						<Results 
+							showWhat={this.state.showWhat}
+							city={this.state.city}
+							country={this.state.country}
+							results={this.state.categorizeResults}
+							handleClear={this.handleClear} />
+						: ""		
 				}
-				{
-					(this.state.showNotFound) ?
-						<h1>Sorry! We couldn't find that city.</h1>
-						: ""
-				}
-				</div>
 
 			</Fragment>
 		);
