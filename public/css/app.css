@@ -15,8 +15,8 @@ main, .search-container button {
 }
 
 html, body {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-family: "Tajawal", sans-serif;
+  font-size: 18px;
 }
 
 main {
@@ -38,6 +38,30 @@ main {
 
 header {
   text-align: center;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h4 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h5 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h6 {
+  font-family: "Montserrat", sans-serif;
 }
 
 .search-container {
@@ -79,15 +103,21 @@ header {
 .search-container button {
   width: calc(100% / 3);
   height: 30px;
-  background: #ccc;
-  border-bottom: 4px solid #999;
-  box-shadow: inset 0 0 1px 1px #fff;
+  background: #9999ff;
+  border-bottom: 4px solid #3333ff;
+  box-shadow: inset 0 0 1px 1px #ccccff;
   font-size: 1.1em;
   cursor: pointer;
 }
-.search-container button:hover {
-  border-bottom: 2px solid #999;
+.search-container button:not(.disabled):hover {
+  border-bottom: 2px solid #3333ff;
   top: 2px;
+}
+.search-container button.disabled {
+  background: #ccc;
+  border-bottom: 4px solid #999;
+  box-shadow: inset 0 0 1px 1px #dedede;
+  cursor: default;
 }
 
 /*# sourceMappingURL=app.css.map */
