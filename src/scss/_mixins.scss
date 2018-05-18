@@ -1,0 +1,25 @@
+@mixin translate($x: -50%, $y: -50%) {
+	-webkit-transform: translate($x, $y);
+	-moz-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
+
+@mixin marginLeftRightAuto { // use within media queries
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+
+@mixin placeholder($color: #ccc) {
+	&::placeholder {
+		color: $color;
+		opacity: 1;
+	}
+	&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	    color: $color;
+	}
+	&::-ms-input-placeholder { /* Microsoft Edge */
+	    color: $color;
+	}
+}
