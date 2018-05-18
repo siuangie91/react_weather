@@ -8,23 +8,24 @@ export default class Search extends React.Component {
 		super();
 
 		this.state = {
+			showSearch: true,
 			enableBtn: false,
 			showResults: false,
 			showNotFound: false,
 			name: "",
 			country: "",
-			list: []
+			list: [],
+			categorizedList: [],
 		}
 
 		this.inputSearch = React.createRef(); // create reference to the <input> field
 	}
 
 	validateInput = () => {
-		console.log(this.inputSearch.current.value);
-
+		// console.log(this.inputSearch.current.value);
 		const value = this.inputSearch.current.value.trim();
 
-		value ? this.setState({enableBtn: true}) : this.setState({enableBtn: false});
+		value ? this.setState({enableBtn: true}) : this.setState({enableBtn: false}); // enable button if input field is not empty
 	}
 
 	search = () => {
@@ -43,44 +44,68 @@ export default class Search extends React.Component {
 
 					this.setState(prevState => {
 						return {
+							showSearch: false,
 							showResults: true,
 							name: city.name,
 							country: city.country,
 							list: json.list
 						}
 					});
+
+					this.categorizeResults();
 				}
 
 				// if not found
 				if(json.cod === "404") {
 					this.setState({
+						showSearch: false,
 						showNotFound: true
 					});
 				}
+
+				return false;
 			})
 			.catch(error => {
 				console.log('error', error);
 			});
 	}
 
-	render() {
-		console.log('this.state', this.state);
+	categorizeResults = () => {
+		// get an array of all the dates
+		// use values of that array to filter out the results
+		console.log('categorizeResults');
 
+		const dates = this.state.list
+			.map((item, i) => {
+				return item.dt_txt.split(" ")[0];
+			})
+			.filter((item, i, currArr) => {
+				return currArr.indexOf(item) === i;
+			});
+
+		console.log('dates', dates);
+	}
+
+	render() {
 		return (
 			<Fragment>
-				<div className="search-container">
-					<label>Search by city:</label>
-					<input type="text" 
-						placeholder="New York"
-						ref={this.inputSearch}
-						onKeyUp={this.validateInput} />
-					{
-						(this.state.enableBtn) ?
-							<button onClick={this.search}>Get Forecast</button>
-							:
-							<button className="disabled" disabled>Get Forecast</button>
-					}
-				</div>
+				{
+					(this.state.showSearch)	?
+						<div className="search-container">
+							<label>Search by city:</label>
+							<input type="text" 
+								placeholder="New York"
+								ref={this.inputSearch}
+								onKeyUp={this.validateInput} />
+							{
+								(this.state.enableBtn) ?
+									<button onClick={this.search}>Get Forecast</button>
+									:
+									<button className="disabled" disabled>Get Forecast</button>
+							}
+						</div>
+						: ""
+				}
 
 				<div className="results">
 				{
@@ -90,7 +115,7 @@ export default class Search extends React.Component {
 				}
 				{
 					(this.state.showNotFound) ?
-						<h1>Sorry! No results for that city.</h1>
+						<h1>Sorry! We couldn't find that city.</h1>
 						: ""
 				}
 				</div>

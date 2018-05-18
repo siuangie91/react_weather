@@ -19,7 +19,7 @@ main {
 	width: 100%;
 	@extend %marginLeftRightAuto;
 	padding: 10px;
-	background: fade-out(yellow, 0.25);
+	background: fade-out(yellow, 0.75);
 	
 	@media only screen and (min-width: 768px) {
 		width: 90%;
@@ -50,6 +50,7 @@ header {
 
 	& > * {
 		display: block;
+		font-family: $bodyFont;
 	}
 
 	label {
@@ -69,8 +70,10 @@ header {
 	button {
 		@extend %relative;
 		width: calc(100% / 3);
-		height: 30px;
+		min-width: 180px;
 		@extend %marginLeftRightAuto;
+		margin-bottom: 10px;
+		padding: 5px 20px;
 		background: lighten(#0000ff, 30%);
 		border-bottom: 4px solid lighten(#0000ff, 10%);
 		box-shadow: inset 0 0 1px 1px lighten(#0000ff, 40%);
@@ -78,8 +81,9 @@ header {
 		cursor: pointer;
 
 		&:not(.disabled):hover {
-			border-bottom: 2px solid lighten(#0000ff, 10%);
 			top: 2px;
+			margin-bottom: 12px;
+			border-bottom: 2px solid lighten(#0000ff, 10%);
 		}
 
 		&.disabled {
