@@ -1,11 +1,9 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-export default class Results extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+import Button from './Button';
 
+export default class Results extends React.Component {
 	view = () => {
 		const {showWhat, city, country, results} = this.props;
 
@@ -33,7 +31,8 @@ export default class Results extends React.Component {
 				{this.view()}
 			{
 				(this.props.showWhat) ? 
-					<button onClick={this.props.handleClear}>Get Different Forecast</button>	
+					<Button clickHandler={this.props.handleClear} 
+						btnCopy="Get Different Forecast" />
 					: ""
 			}
 			</div>

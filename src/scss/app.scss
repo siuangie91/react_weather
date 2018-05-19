@@ -15,6 +15,53 @@ html, body {
 	}
 }
 
+@for $i from 1 through 6 {
+	h#{$i} { font-family: $headingFont; }
+}
+
+input {
+	width: 100%;
+	font-size: 1.2rem;
+	padding: 0.2rem;
+	border: 1px solid red;
+	margin-bottom: 10px;
+
+	@include placeholder(lighten(black, 80%));
+}
+
+button {
+	@extend %relative;
+	display: block;
+	height: 2rem;	
+	background: lighten(#0000ff, 30%);
+	border-bottom: 4px solid lighten(#0000ff, 10%);
+	box-shadow: inset 0 0 1px 1px lighten(#0000ff, 40%);
+	cursor: pointer;
+
+	&:not(.disabled):hover {
+		top: 2px;
+		margin-bottom: 12px;
+		border-bottom: 2px solid lighten(#0000ff, 10%);
+	}
+
+	&.disabled {
+		background: #ccc;
+		border-bottom: 4px solid #999;
+		box-shadow: inset 0 0 1px 1px #dedede;
+		cursor: default;
+	}
+
+	& > span {
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-size: 1.1rem;
+		@extend %centerVertical;
+	}
+}
+
+/****** main content *******/
+
 main {
 	width: 100%;
 	@extend %marginLeftRightAuto;
@@ -35,10 +82,6 @@ header {
 	text-align: center;
 }
 
-@for $i from 1 through 6 {
-	h#{$i} { font-family: $headingFont; }
-}
-
 .search-container {
 	width: 100%;
 	margin-top: 20px;
@@ -57,41 +100,19 @@ header {
 		margin-bottom: 10px;
 	}
 
-	input {
-		width: 100%;
-		font-size: 1.2em;
-		padding: 0.2em;
-		border: 1px solid red;
-		margin-bottom: 10px;
-
-		@include placeholder(lighten(black, 80%));
-	}
-
 	button {
-		@extend %relative;
 		width: calc(100% / 3);
 		min-width: 180px;
 		@extend %marginLeftRightAuto;
 		margin-bottom: 10px;
-		padding: 5px 20px;
-		background: lighten(#0000ff, 30%);
-		border-bottom: 4px solid lighten(#0000ff, 10%);
-		box-shadow: inset 0 0 1px 1px lighten(#0000ff, 40%);
-		font-size: 1.1em;
-		cursor: pointer;
+	}
+}
 
-		&:not(.disabled):hover {
-			top: 2px;
-			margin-bottom: 12px;
-			border-bottom: 2px solid lighten(#0000ff, 10%);
-		}
-
-		&.disabled {
-			background: #ccc;
-			border-bottom: 4px solid #999;
-			box-shadow: inset 0 0 1px 1px #dedede;
-			cursor: default;
-		}
+.results {
+	button {
+		width: calc(100% / 2);
+		min-width: 220px;
+		@extend %marginLeftRightAuto;
 	}
 }
 

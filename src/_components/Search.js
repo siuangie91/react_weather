@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import APIKEY from '../api';
 
 import Results from './Results';
+import Button from './Button';
 
 export default class Search extends React.Component {
 	constructor() {
@@ -123,12 +124,11 @@ export default class Search extends React.Component {
 								placeholder="New York"
 								ref={this.inputSearch}
 								onKeyUp={this.validateInput} />
-							{
-								(this.state.enableBtn) ?
-									<button onClick={this.search}>Get Forecast</button>
-									:
-									<button className="disabled" disabled>Get Forecast</button>
-							}
+									
+							<Button 
+								isDisabled={!this.state.enableBtn}
+								clickHandler={this.search}
+								btnCopy="Get Forecast" />
 						</div>
 						: ""
 				}
