@@ -1,7 +1,8 @@
 import React from 'react';
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 
 import Button from './Button';
+import DatesContainer from './DatesContainer';
 
 export default class Results extends React.Component {
 	view = () => {
@@ -10,13 +11,12 @@ export default class Results extends React.Component {
 		console.log(this.props);
 
 		let resultsView; 
-
 		switch(showWhat) {
 			case "notFound":
 				resultsView = <h1>Sorry! We couldn't find that city.</h1>;
 				break;
 			case "results":
-				resultsView = <h1>{city}, {country}</h1>;
+				resultsView = <DatesContainer city={city} country={country} results={results}/>;
 				break;
 			default:
 				break;

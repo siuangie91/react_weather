@@ -51,7 +51,7 @@ export default class Search extends React.Component {
 							city: city.name,
 							country: city.country,
 							list: json.list,
-							categorizedList: this.categorizeResults()
+							categorizedList: this.categorizeResults(json.list)
 						}
 					});
 				}
@@ -71,11 +71,13 @@ export default class Search extends React.Component {
 			});
 	}
 
-	categorizeResults = () => {
+	categorizeResults = (list) => {
 		// get an array of all the dates
 		// use values of that array to filter out the results
 
-		const dates = this.state.list
+		// console.log('list', this.state.list);
+
+		const dates = list
 			.map((item, i) => {
 				return item.dt_txt.split(" ")[0];
 			})
@@ -86,16 +88,24 @@ export default class Search extends React.Component {
 		// console.log('dates', dates);
 
 		// create a new object with those dates as keys
-		let sortedResults = {};
+		let sortedResults = [];
 		for(let theDate of dates) {
-			sortedResults[`${theDate}`] = [];
+			sortedResults.push({
+				name: theDate,
+				weathers: []
+			});
 		}
 
-		// loop through the response list, and map each item to the sortedResults object based on date
-		for(let item of this.state.list) {
-			let itemDate = item.dt_txt.split(" ")[0];
+		// for each item in the json.list
+		for(let item of list) {
+			let itemDate = item.dt_txt.split(" ")[0]; // get the date in string form
 
-			sortedResults[itemDate].push(item);
+			//if sortedResults.name = itemDate then push that item
+			for(let result of sortedResults) {
+				if(result.name === itemDate) {
+					result.weathers.push(item);
+				}
+			}
 		}
 
 		// console.log('sortedResults', sortedResults);
@@ -103,9 +113,6 @@ export default class Search extends React.Component {
 	}
 
 	handleClear = () => {
-		// clear input field
-		// this.inputSearch.current.value = "";
-
 		this.setState({
 			showSearch: true,
 			enableBtn: false,
@@ -114,6 +121,8 @@ export default class Search extends React.Component {
 	}
 
 	render() {
+		// console.log('state', this.state);
+
 		return (
 			<Fragment>
 				{
@@ -139,7 +148,7 @@ export default class Search extends React.Component {
 							showWhat={this.state.showWhat}
 							city={this.state.city}
 							country={this.state.country}
-							results={this.state.categorizeResults}
+							results={this.state.categorizedList}
 							handleClear={this.handleClear} />
 						: ""		
 				}
