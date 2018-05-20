@@ -8,7 +8,7 @@ export default class Results extends React.Component {
 	view = () => {
 		const {showWhat, city, country, results} = this.props;
 
-		console.log(this.props);
+		console.log('results.prop', this.props);
 
 		let resultsView; 
 		switch(showWhat) {
