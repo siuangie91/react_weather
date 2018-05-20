@@ -5,20 +5,6 @@ import { formatDate } from '../_helpers';
 
 import ForecastItem from './ForecastItem';
 
-/*const createForecastItem = function(item, index) {
-	return (
-		<li key={index}>
-			<span><strong>{formatTime(item.dt_txt.split(' ')[1])}</strong></span> 
-			<img src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt={item.weather[0].main}/>
-			<span className="description">{item.weather[0].description}</span>
-			<p>
-				<span className="high">H: {Math.round(item.main.temp_max)}</span>
-				<span className="low">L: {Math.round(item.main.temp_max)}</span>
-			</p>
-		</li>
-	);
-};*/
-
 export default class DatesContainer extends React.Component {
 	render() {
 		const {city, country, results} = this.props;

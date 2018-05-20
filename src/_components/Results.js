@@ -13,7 +13,7 @@ export default class Results extends React.Component {
 		let resultsView; 
 		switch(showWhat) {
 			case "notFound":
-				resultsView = <h1>Sorry! We couldn't find that city.</h1>;
+				resultsView = <h2>Sorry! We couldn't find that city.</h2>;
 				break;
 			case "results":
 				resultsView = <DatesContainer city={city} country={country} results={results}/>;
