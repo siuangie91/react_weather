@@ -1,17 +1,23 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-import { formatDate, formatTime } from '../_helpers'; 
+import { formatDate } from '../_helpers'; 
 
-const createForecastItem = function(item, index) {
+import ForecastItem from './ForecastItem';
+
+/*const createForecastItem = function(item, index) {
 	return (
 		<li key={index}>
-			<span className="time"><strong>{formatTime(item.dt_txt.split(' ')[1])}</strong></span> 
-			<img className="icon" src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt={item.weather[0].main}/>
+			<span><strong>{formatTime(item.dt_txt.split(' ')[1])}</strong></span> 
+			<img src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt={item.weather[0].main}/>
 			<span className="description">{item.weather[0].description}</span>
+			<p>
+				<span className="high">H: {Math.round(item.main.temp_max)}</span>
+				<span className="low">L: {Math.round(item.main.temp_max)}</span>
+			</p>
 		</li>
 	);
-};
+};*/
 
 export default class DatesContainer extends React.Component {
 	render() {
@@ -31,14 +37,14 @@ export default class DatesContainer extends React.Component {
 								<ul className="row"> 
 									{
 										result.weathers.slice(0,4) // the first 4
-											.map((weatherItem, i) => createForecastItem(weatherItem, i))
+											.map((weatherItem, i) => <ForecastItem item={weatherItem} key={i}/>)
 									}
 								</ul>
 
 								<ul className="row">
 									{
 										result.weathers.slice(4) // the remaining
-											.map((weatherItem, i) => createForecastItem(weatherItem, i))
+											.map((weatherItem, i) => <ForecastItem item={weatherItem} key={i}/>)
 									}
 								</ul>
 							</div>	
