@@ -28,13 +28,14 @@ export default class Results extends React.Component {
 	render() {
 		return (
 			<div className="results">
+				{
+					(this.props.showWhat) ? 
+						<Button clickHandler={this.props.handleClear} 
+							btnCopy="Get Different Forecast" />
+						: ""
+				}
+
 				{this.view()}
-			{
-				(this.props.showWhat) ? 
-					<Button clickHandler={this.props.handleClear} 
-						btnCopy="Get Different Forecast" />
-					: ""
-			}
 			</div>
 		);
 	}

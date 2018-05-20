@@ -1,21 +1,13 @@
 @import "mixins";
 
-%absolute {
-	position: absolute;
-}
-
-%relative {
-	position: relative;
-}
-
 %centerVertical {
-	@extend %absolute;
+	position: absolute;
 	top: 50%;
 	@include translate(0,-50%);
 }
 
 %centerHorizontal {
-	@extend %absolute;
+	position: absolute;
 	left: 50%;
 	@include translate(-50%,0);
 }

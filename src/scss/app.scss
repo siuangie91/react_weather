@@ -30,7 +30,7 @@ input {
 }
 
 button {
-	@extend %relative;
+	position: relative;
 	display: block;
 	height: 2rem;	
 	background: lighten(#0000ff, 30%);
@@ -40,7 +40,6 @@ button {
 
 	&:not(.disabled):hover {
 		top: 2px;
-		margin-bottom: 12px;
 		border-bottom: 2px solid lighten(#0000ff, 10%);
 	}
 
@@ -64,15 +63,16 @@ button {
 
 main {
 	width: 100%;
+	min-height: calc(100vh - 60px);
 	@extend %marginLeftRightAuto;
 	padding: 10px;
 	background: fade-out(yellow, 0.75);
 	
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 769px) {
 		width: 90%;
 	}
 
-	@media only screen and (min-width: 990px) {
+	@media only screen and (min-width: 991px) {
 		width: 80%;
 		max-width: 1100px;
 	}	
@@ -84,9 +84,11 @@ header {
 
 .search-container {
 	width: 100%;
+	max-width: 400px;
 	margin-top: 20px;
+	@extend %marginLeftRightAuto;
 
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 769px) {
 		width: 75%;
 		@include marginLeftRightAuto;
 	}
@@ -109,17 +111,22 @@ header {
 }
 
 .results {
+	max-width: 370px;
 	margin-top: 20px;
+	@extend %marginLeftRightAuto;
+
+	@media only screen and (min-width: 769px) {
+		max-width: 770px;
+	}
 
 	h2 {
-		margin-bottom: 20px;
+		margin: 20px 0;
 		text-align: center;
 		font-size: 1.3rem;
 	}
 
 	button {
-		width: calc(100% / 2);
-		min-width: 220px;
+		width: 250px;
 		@extend %marginLeftRightAuto;
 	}
 
@@ -135,13 +142,19 @@ header {
 		}
 
 		ul {
-			@extend %relative;
+			position: relative;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 			list-style: none;
 			margin-bottom: 10px;
 			font-size: 0.8rem;
+
+			@media only screen and (min-width: 769px) {
+				display: inline-flex;
+				justify-content: flex-start;
+				width: calc(50% - 10px);
+			}
 			
 			li {
 				display: block;
@@ -150,6 +163,11 @@ header {
 				box-shadow: 2px 3px 5px -1px lighten(black, 40%);
 				padding: 4px 0;
 				text-align: center;
+
+				@media only screen and (min-width: 769px) {
+					min-height: 120px;
+					margin-right: 10px;
+				}
 
 				& > * {
 					display: block;
@@ -165,6 +183,13 @@ header {
 
 /********* footer **********/
 footer {
-	text-align: center;
+	position: relative;
+	height: 60px;
+
+	p {
+		width: 100%;
+		text-align: center;
+		@extend %centerVertical;
+	}
 }
 
