@@ -190,6 +190,7 @@ header {
 				text-align: center;
 
 				@media only screen and (min-width: 769px) {
+					max-width: 85px;
 					min-height: 160px;
 					margin-right: 10px;
 				}
