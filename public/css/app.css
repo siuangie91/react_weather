@@ -90,7 +90,7 @@ button {
   color: white;
   cursor: pointer;
 }
-button:not(.disabled):hover {
+button:not(.disabled):hover, button:not(.disabled):focus {
   top: 2px;
   border-bottom: 2px solid #1d9ed5;
 }

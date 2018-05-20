@@ -53,7 +53,8 @@ button {
 	color: white;
 	cursor: pointer;
 
-	&:not(.disabled):hover {
+	&:not(.disabled):hover,
+	&:not(.disabled):focus {
 		top: 2px;
 		border-bottom: 2px solid darken($lightBlue, 10%);
 	}
