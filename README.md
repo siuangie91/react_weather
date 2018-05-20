@@ -1,6 +1,6 @@
 ## React Weather Forecast (no Redux)
 
-WORK IN PROGRESS. React-based weather forecast SPA. Styled with Sass.
+5-day weather forecast SPA built on React. Styled with Sass.
 
 **Demo:** [http://projects.angiesiudevworks.com/reactweather/](http://projects.angiesiudevworks.com/reactweather/)
 
