@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-import { formatDate } from '../_helpers'; 
+import { formatDate, formatTime } from '../_helpers'; 
 
 import ForecastItem from './ForecastItem';
 
@@ -23,14 +23,28 @@ export default class DatesContainer extends React.Component {
 								<ul className="row"> 
 									{
 										result.weathers.slice(0,4) // the first 4
-											.map((weatherItem, i) => <ForecastItem item={weatherItem} key={i}/>)
+											.map((weatherItem, i) => 
+												<ForecastItem key={i}
+													date={formatTime(weatherItem.dt_txt.split(' ')[1])}
+													icon={weatherItem.weather[0].icon}
+													main={weatherItem.weather[0].main}
+													description={weatherItem.weather[0].description}
+													max={Math.round(weatherItem.main.temp_max)}
+													min={Math.round(weatherItem.main.temp_min)} />)
 									}
 								</ul>
 
 								<ul className="row">
 									{
 										result.weathers.slice(4) // the remaining
-											.map((weatherItem, i) => <ForecastItem item={weatherItem} key={i}/>)
+											.map((weatherItem, i) => 
+												<ForecastItem key={i}
+													date={formatTime(weatherItem.dt_txt.split(' ')[1])}
+													icon={weatherItem.weather[0].icon}
+													main={weatherItem.weather[0].main}
+													description={weatherItem.weather[0].description}
+													max={Math.round(weatherItem.main.temp_max)}
+													min={Math.round(weatherItem.main.temp_min)} />)
 									}
 								</ul>
 							</div>	
