@@ -1,4 +1,4 @@
-export const MONTHS = {
+const MONTHS = {
 	"01": "January",
 	"02": "February",
 	"03": "March",
@@ -36,7 +36,7 @@ export const formatTime = function(timeIn24HrFormat) {
 
 	if(+hour <= 11) { // use "+" to force as a number
 		if(+hour <= 10) {
-			if(+hour == 0) {
+			if(+hour === 0) {
 				formmattedHour = "12";
 			} else {
 				formmattedHour = hour[1]; // don't take the beginning zero
@@ -48,7 +48,7 @@ export const formatTime = function(timeIn24HrFormat) {
 		dayNight = "AM";
 	} else {
 		formmattedHour = +hour - 12;
-		if(formmattedHour == 0) {
+		if(formmattedHour === 0) {
 			formmattedHour = "12";
 		}
 		dayNight = "PM";
@@ -56,3 +56,27 @@ export const formatTime = function(timeIn24HrFormat) {
 
 	return `${formmattedHour}:${minutes} ${dayNight}`
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

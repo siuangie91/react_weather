@@ -2,7 +2,7 @@ button > span {
   position: absolute;
 }
 
-button {
+button, .results .date ul {
   position: relative;
 }
 
@@ -13,7 +13,7 @@ button > span {
   transform: translate(0, -50%);
 }
 
-main, .search-container button, .results button {
+main, .search-container button, .results button, .results .date ul li img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -26,7 +26,7 @@ main, .search-container button, .results button {
 }
 
 html, body {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 18px;
 }
 
@@ -135,7 +135,7 @@ header {
 }
 .search-container > * {
   display: block;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 .search-container label {
   margin-bottom: 10px;
@@ -146,9 +146,46 @@ header {
   margin-bottom: 10px;
 }
 
+.results {
+  margin-top: 20px;
+}
+.results h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+}
 .results button {
   width: calc(100% / 2);
   min-width: 220px;
+}
+.results .date {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 4px 6px 10px -2px #333333;
+}
+.results .date h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.results .date ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+.results .date ul li {
+  display: block;
+  width: calc((100% / 4) - 6px);
+  background: #fff;
+  box-shadow: 2px 3px 5px -1px #666666;
+  padding: 4px 0;
+  text-align: center;
+}
+.results .date ul li > * {
+  display: block;
 }
 
 /********* footer **********/

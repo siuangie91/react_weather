@@ -38,7 +38,7 @@ export default class Search extends React.Component {
 			{ method: 'GET'})
 			.then(response => response.json())
 			.then(json => {
-				console.log('json', json);
+				// console.log('json', json);
 
 				// show results only if response is 200 (actual results returned from api)
 				if(json.cod === "200") {
@@ -100,7 +100,7 @@ export default class Search extends React.Component {
 		for(let item of list) {
 			let itemDate = item.dt_txt.split(" ")[0]; // get the date in string form
 
-			//if sortedResults.name = itemDate then push that item
+			//if sortedResults.name = itemDate then push that item into that sortedResult's weathers array
 			for(let result of sortedResults) {
 				if(result.name === itemDate) {
 					result.weathers.push(item);
