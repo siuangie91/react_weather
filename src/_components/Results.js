@@ -36,6 +36,13 @@ export default class Results extends React.Component {
 				}
 
 				{this.view()}
+
+				{
+					(this.props.showWhat === "results") ? // show the button again at the bottom if real results are returned
+						<Button clickHandler={this.props.handleClear} 
+							btnCopy="Get Different Forecast" />
+						: ""
+				}
 			</div>
 		);
 	}
