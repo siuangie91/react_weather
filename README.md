@@ -1,6 +1,6 @@
 ## React Weather Forecast (no Redux)
 
-5-day weather forecast SPA built on React. Styled with Sass. Uses the [5 Day / 3 Hour Forecast](https://openweathermap.org/forecast5/) API from [OpenWeatherMap](https://openweathermap.org/forecast5/).
+5-day weather forecast SPA built on React. Styled with Sass. Uses the [5 Day / 3 Hour Forecast](https://openweathermap.org/forecast5/) Search by City API from [OpenWeatherMap](https://openweathermap.org/forecast5/).
 
 **Demo:** [http://projects.angiesiudevworks.com/reactweather/](http://projects.angiesiudevworks.com/reactweather/)
 
