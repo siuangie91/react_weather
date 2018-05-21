@@ -4,7 +4,7 @@
 
 **Demo:** [http://projects.angiesiudevworks.com/reactweather/](http://projects.angiesiudevworks.com/reactweather/)
 
-Example of API JSON response from OpenWeatherMap:
+Open the console to see the props that are passed through. Example of API JSON response from OpenWeatherMap:
 ```
 {"city":{"id":1851632,"name":"Shuzenji",
 "coord":{"lon":138.933334,"lat":34.966671},
